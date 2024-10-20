@@ -10,9 +10,10 @@ You must first install ansible.  One of the easiest way is to use pip.
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 ```
-- Create a configuration (~/.ansible.cfg), this can be done by using the following tool that comes with ansible:
+- Create a configuration (~/.ansible.cfg), this can be done by using the ansible-config that comes with ansible:
 ```
-$ ansible-config init --disabled > ~/.ansible.cfg
+ansible-config init --disabled > ~/ansible/ansible.cfg
+ln -s ~/ansible/ansible.cfg ~/.ansible.cfg
 ```
 - Suppose, you put inventory in the ~/ansible directory, edit the configration file to include inventory location by adding the following line after default section:
 ```
