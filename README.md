@@ -1,14 +1,4 @@
 # IaC @ software-defined-system
-This repository contains examples of terraform and ansible.  The following are the prerequisites:
-
-For terraform:
-- Create project on GCP
-- Login to the GCP with:
-```gcloud auth application-default login```
-  
-For ansible:
-- Set the UTF8 locale by adding the following codes to .bashrc/.zshrc:
-```
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-```
+This repository is created and maintained by Natawut Nupairoj, Chulalongkorn University, Thailand.  It contains examples of terraform and ansible for Software-Defined-System class being taught at Chulalongkorn University.  See the README.md in each directory for more details.
+- [Terraform README.md](terraform/README.md)
+- [Ansible README.md](ansible/README.md)

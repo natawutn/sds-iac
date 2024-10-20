@@ -29,6 +29,19 @@ resource "google_compute_firewall" "ssh" {
   target_tags   = ["ssh"]
 }
 
+resource "google_compute_firewall" "http" {
+  name = "allow-http"
+  allow {
+    ports    = ["80"]
+    protocol = "tcp"
+  }
+  direction     = "INGRESS"
+  network       = google_compute_network.vpc_network.id
+  priority      = 1000
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["http"]
+}
+
 variable "instance_set" {
   type = list(string)
   default = ["pacific", "arctic", "atlantic"]
@@ -40,19 +53,20 @@ resource "google_compute_instance" "default" {
   name         = each.value
   machine_type = "f1-micro"
   zone         = "asia-southeast1-c"
-  tags         = ["ssh"]
+  tags         = ["ssh", "http"]
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-11"
+      image = "debian-cloud/debian-12"
     }
   }
 
   metadata = {
     ssh-keys = "natawut:${file("~/.ssh/id_rsa.pub")}"
   }
-  # Install nginx
-  # metadata_startup_script = "sudo apt-get update; sudo apt-get install nginx"
+  
+  # Install python3 and set locale
+  metadata_startup_script = "sudo apt-get update; sudo apt-get install python3 -y; sudo apt-get install locales -y; sudo locale-gen en_US.UTF-8"
 
   network_interface {
     subnetwork = google_compute_subnetwork.default.id
