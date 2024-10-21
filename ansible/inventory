@@ -1,13 +1,13 @@
 all:
   hosts:
     pacific:
-      ansible_host: 35.240.143.206
+      ansible_host: 34.142.142.205
       ansible_python_interpreter: /usr/bin/python3
     arctic:
-      ansible_host: 34.143.250.44
+      ansible_host: 35.197.131.255
       ansible_python_interpreter: /usr/bin/python3
     atlantic:
-      ansible_host: 34.143.226.111
+      ansible_host: 34.124.159.197
       ansible_python_interpreter: /usr/bin/python3
 webservers:
   hosts:
